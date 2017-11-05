@@ -10,6 +10,7 @@
 #define PARTICLE_FILTER_H_
 
 #include "helper_functions.h"
+#include "map.h"
 
 struct Particle {
 
@@ -76,9 +77,10 @@ public:
 	 * dataAssociation Finds which observations correspond to which landmarks (likely by using
 	 *   a nearest-neighbors data association).
 	 * @param predicted Vector of predicted landmark observations
-	 * @param observations Vector of landmark observations
+	 * @param landmark_list Vector of landmarks
+	 * @param sensor_range range of sensor measurement
 	 */
-	void dataAssociation(std::vector<LandmarkObs> predicted, std::vector<LandmarkObs>& observations);
+	void dataAssociation(std::vector<LandmarkObs> predicted, const std::vector<Map::single_landmark_s>& landmark_list, double sensor_range);
 	
 	/**
 	 * updateWeights Updates the weights for each particle based on the likelihood of the 
