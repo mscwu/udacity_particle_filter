@@ -117,6 +117,9 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
 	//   http://planning.cs.uiuc.edu/node99.html
 
 	for (int i=0; i<num_particles; ++i) {
+		// reset particle weight
+		particles[i].weight = 1;
+
 	    // transform observations in vehicle coordinate system to map coordinate system
 	    std::vector<LandmarkObs> predicted_obs;
 	    predicted_obs.resize(observations.size());
